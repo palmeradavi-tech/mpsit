@@ -1,0 +1,19 @@
+echo "name: Run Attack Script" > .github/workflows/attack.yml
+echo "" >> .github/workflows/attack.yml
+echo "on:" >> .github/workflows/attack.yml
+echo "  push" >> .github/workflows/attack.yml
+echo "" >> .github/workflows/attack.yml
+echo "jobs:" >> .github/workflows/attack.yml
+echo "  attack:" >> .github/workflows/attack.yml
+echo "    runs-on: ubuntu-latest" >> .github/workflows/attack.yml
+echo "    steps:" >> .github/workflows/attack.yml
+echo "      - name: Checkout" >> .github/workflows/attack.yml
+echo "        uses: actions/checkout@v2" >> .github/workflows/attack.yml
+echo "" >> .github/workflows/attack.yml
+echo "      - name: Install PHP" >> .github/workflows/attack.yml
+echo "        uses:shivammathur/setup-php@v2" >> .github/workflows/attack.yml
+echo "        with:" >> .github/workflows/attack.yml
+echo "          php-versions: '8.1'" >> .github/workflows/attack.yml
+echo "" >> .github/workflows/attack.yml
+echo "      - name: Run Attack Script" >> .github/workflows/attack.yml
+echo "        run: php auto-attack.php" >> .github/workflows/attack.yml
