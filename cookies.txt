@@ -1,0 +1,1 @@
+PHPSESSID=abc123; path=/; domain=.example.com
