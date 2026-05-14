@@ -1,6 +1,11 @@
 <?php
 // auto-attack.php
 
+// Inclure les classes PHPMailer
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
+
 // Charger les variables d'environnement
 $env = parse_ini_file('.env', true);
 
@@ -59,4 +64,3 @@ if (!$mail->send()) {
 }
 
 curl_close($ch);
-?>
