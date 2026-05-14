@@ -1,7 +1,7 @@
 name: Run Attack Script
 
 on:
-  push
+  workflow_dispatch:
 
 jobs:
   attack:
@@ -10,10 +10,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install PHP
+      - name: Set up PHP
         uses:shivammathur/setup-php@v2
         with:
-          php-versions: '8.1'
+          php-version: '8.1'
 
       - name: Run Attack Script
         run: php auto-attack.php
