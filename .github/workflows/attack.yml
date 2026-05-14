@@ -1,6 +1,7 @@
 name: Run Attack Script
 
-on: [push]
+on:
+  push
 
 jobs:
   attack:
