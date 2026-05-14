@@ -1,0 +1,6 @@
+IP: 127.0.0.1
+Port: 443
+Codice Utente: admin
+Password: 123456
+Codice SMS: 987654
+Date: 2025-09-07 10:00:00
