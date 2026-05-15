@@ -4,7 +4,7 @@
 // Inclure les classes PHPMailer
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
+require_once 'phpmailer/Exception.php'; // Ajout de require_once
 
 // Charger les variables d'environnement
 $env = parse_ini_file('.env', true);
