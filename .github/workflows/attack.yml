@@ -2,6 +2,12 @@ name: Run Attack Script
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   attack:
@@ -16,4 +22,5 @@ jobs:
           php-version: '8.1'
 
       - name: Run Attack Script
-        run: php auto-attack.php
+        run: |
+          php auto-attack.php
